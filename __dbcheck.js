@@ -1,0 +1,16 @@
+const Database = require('better-sqlite3');  
+const db = new Database('koperasi.db');  
+const pageSize = db.pragma('page_size', { simple: true });  
+const maxPageCount = db.pragma('max_page_count', { simple: true });  
+const pageCount = db.pragma('page_count', { simple: true });  
+const row = db.prepare('select sqlite_version() as v').get();  
+const sqliteVersion = row.v;  
+const maxBytes = pageSize * maxPageCount;  
+const usedBytes = pageSize * pageCount;  
+console.log('sqlite_version=' + sqliteVersion);  
+console.log('page_size=' + pageSize);  
+console.log('max_page_count=' + maxPageCount);  
+console.log('page_count=' + pageCount);  
+console.log('max_bytes=' + maxBytes);  
+console.log('used_bytes=' + usedBytes);  
+db.close();  
