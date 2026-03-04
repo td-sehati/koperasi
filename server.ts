@@ -814,8 +814,12 @@ app.get("/api/schedule/today", async (req, res) => {
 });
 
 app.post("/api/testing/reset-data", requireAdmin, async (_req, res) => {
-  if (process.env.NODE_ENV === "production") {
-    return res.status(403).json({ error: "Endpoint reset hanya tersedia di mode non-production." });
+  const isProduction = process.env.NODE_ENV === "production";
+  const allowProdReset = process.env.ALLOW_PROD_RESET === "true";
+  if (isProduction && !allowProdReset) {
+    return res.status(403).json({
+      error: "Endpoint reset nonaktif di production. Set ALLOW_PROD_RESET=true jika owner perlu reset data uji.",
+    });
   }
   try {
     await pool.query("BEGIN");
