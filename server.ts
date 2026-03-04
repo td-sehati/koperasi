@@ -8,8 +8,11 @@ import { Pool } from "pg";
 
 const app = express();
 const PORT = Number(process.env.PORT || 3000);
-const DATABASE_URL = process.env.DATABASE_URL;
-if (!DATABASE_URL) throw new Error("DATABASE_URL belum diisi.");
+const readEnv = (key: string) => process.env[key]?.trim().replace(/^['"]|['"]$/g, "");
+const DATABASE_URL = readEnv("DATABASE_URL") || readEnv("DATABASE_URL_DIRECT");
+if (!DATABASE_URL) {
+  throw new Error("DATABASE_URL belum diisi. Set DATABASE_URL atau DATABASE_URL_DIRECT di environment deploy.");
+}
 
 const withNoVerifySSL = (url: string) => {
   const sep = url.includes("?") ? "&" : "?";
