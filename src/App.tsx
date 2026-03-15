@@ -1272,7 +1272,7 @@ const Reports = ({ currentUser, paymentInstructions }: { currentUser: AuthUser, 
                   <p>Pembayaran ke rekening:</p>
                   <ul className="list-disc pl-4 space-y-0.5">
                     {paymentInstructions.payTo
-                      .split(',')
+                      .split(/\r?\n|,\s*(?=\()/)
                       .map((s) => s.trim())
                       .filter(Boolean)
                       .map((item, idx) => (
@@ -1516,7 +1516,7 @@ export default function App() {
                   <p>Pembayaran ke rekening:</p>
                   <ul className="list-disc pl-4 space-y-0.5">
                     {paymentInstructions.payTo
-                      .split(',')
+                      .split(/\r?\n|,\s*(?=\()/)
                       .map((s) => s.trim())
                       .filter(Boolean)
                       .map((item, idx) => (
