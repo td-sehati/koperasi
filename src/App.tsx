@@ -1268,9 +1268,18 @@ const Reports = ({ currentUser, paymentInstructions }: { currentUser: AuthUser, 
               <div className="p-3 rounded-xl bg-white border border-indigo-100 text-xs text-slate-600 space-y-1">
                 <p className="font-bold text-slate-800">Arahan Pembayaran Langganan Officer</p>
                 <p>Biaya: {paymentInstructions.feeLabel}</p>
-                <p className="whitespace-pre-line">
-                  Pembayaran ke rekening: {paymentInstructions.payTo.split(',').map((s) => s.trim()).filter(Boolean).join('\n')}
-                </p>
+                <div className="space-y-1">
+                  <p>Pembayaran ke rekening:</p>
+                  <ul className="list-disc pl-4 space-y-0.5">
+                    {paymentInstructions.payTo
+                      .split(',')
+                      .map((s) => s.trim())
+                      .filter(Boolean)
+                      .map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                  </ul>
+                </div>
                 <p>Konfirmasi Pembayaran ke WhatsApp: {paymentInstructions.confirmTo}</p>
               </div>
             )}
@@ -1503,9 +1512,18 @@ export default function App() {
             {paymentInstructions && (
               <>
                 <p>Biaya: {paymentInstructions.feeLabel}</p>
-                <p className="whitespace-pre-line">
-                  Pembayaran ke rekening: {paymentInstructions.payTo.split(',').map((s) => s.trim()).filter(Boolean).join('\n')}
-                </p>
+                <div className="space-y-1">
+                  <p>Pembayaran ke rekening:</p>
+                  <ul className="list-disc pl-4 space-y-0.5">
+                    {paymentInstructions.payTo
+                      .split(',')
+                      .map((s) => s.trim())
+                      .filter(Boolean)
+                      .map((item, idx) => (
+                        <li key={idx}>{item}</li>
+                      ))}
+                  </ul>
+                </div>
                 <p>Konfirmasi Pembayaran ke WhatsApp: {paymentInstructions.confirmTo}</p>
               </>
             )}
