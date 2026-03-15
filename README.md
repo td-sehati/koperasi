@@ -56,9 +56,9 @@ Contoh format `DATABASE_URL`:
    - `DATABASE_URL=<connection-string-supabase-session-pooler>?sslmode=no-verify`
    - `ADMIN_USERNAME=owner`
    - `ADMIN_PASSWORD=<ganti-password-kuat>`
-   - `SUBSCRIPTION_FEE_LABEL=Rp 90.000 / 30 hari`
-   - `SUBSCRIPTION_PAY_TO=Transfer ke rekening owner aplikasi`
-   - `SUBSCRIPTION_CONFIRM_TO=Konfirmasi via WhatsApp ke owner aplikasi`
+   - `SUBSCRIPTION_FEE_LABEL=Rp 30.000 / 30 Hari`
+   - `SUBSCRIPTION_PAY_TO=(BRI) 4446 0102 0799 534 A/N TAUFIK RIZAL, (SEABANK) 9013 2566 5382 a/n Taufik Rizal, A.Md.Kom, (DANA) 085176744840`
+   - `SUBSCRIPTION_CONFIRM_TO=085176744840`
 4. Buka `Settings -> Regions & Replicas`, pilih region yang sama dengan Supabase.
 5. Redeploy.
 6. Generate domain di `Networking` dengan target port `8080`.

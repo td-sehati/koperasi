@@ -1268,8 +1268,10 @@ const Reports = ({ currentUser, paymentInstructions }: { currentUser: AuthUser, 
               <div className="p-3 rounded-xl bg-white border border-indigo-100 text-xs text-slate-600 space-y-1">
                 <p className="font-bold text-slate-800">Arahan Pembayaran Langganan Officer</p>
                 <p>Biaya: {paymentInstructions.feeLabel}</p>
-                <p>Pembayaran: {paymentInstructions.payTo}</p>
-                <p>Konfirmasi: {paymentInstructions.confirmTo}</p>
+                <p className="whitespace-pre-line">
+                  Pembayaran ke rekening: {paymentInstructions.payTo.split(',').map((s) => s.trim()).filter(Boolean).join('\n')}
+                </p>
+                <p>Konfirmasi Pembayaran ke WhatsApp: {paymentInstructions.confirmTo}</p>
               </div>
             )}
           </div>
@@ -1501,8 +1503,10 @@ export default function App() {
             {paymentInstructions && (
               <>
                 <p>Biaya: {paymentInstructions.feeLabel}</p>
-                <p>Pembayaran: {paymentInstructions.payTo}</p>
-                <p>Konfirmasi: {paymentInstructions.confirmTo}</p>
+                <p className="whitespace-pre-line">
+                  Pembayaran ke rekening: {paymentInstructions.payTo.split(',').map((s) => s.trim()).filter(Boolean).join('\n')}
+                </p>
+                <p>Konfirmasi Pembayaran ke WhatsApp: {paymentInstructions.confirmTo}</p>
               </>
             )}
           </div>

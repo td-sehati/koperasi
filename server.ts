@@ -45,9 +45,11 @@ const getSubscriptionMeta = (subscriptionEndAt?: string | null) => {
 };
 
 const paymentInstructions = {
-  feeLabel: process.env.SUBSCRIPTION_FEE_LABEL || "Rp 100.000 / 30 hari",
-  payTo: process.env.SUBSCRIPTION_PAY_TO || "Transfer ke rekening owner aplikasi",
-  confirmTo: process.env.SUBSCRIPTION_CONFIRM_TO || "Konfirmasi via WhatsApp ke owner aplikasi",
+  feeLabel: process.env.SUBSCRIPTION_FEE_LABEL || "Rp 30.000 / 30 Hari",
+  payTo:
+    process.env.SUBSCRIPTION_PAY_TO ||
+    "(BRI) 4446 0102 0799 534 A/N TAUFIK RIZAL, (SEABANK) 9013 2566 5382 a/n Taufik Rizal, A.Md.Kom, (DANA) 085176744840",
+  confirmTo: process.env.SUBSCRIPTION_CONFIRM_TO || "085176744840",
 };
 
 const validCollectionDays = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
