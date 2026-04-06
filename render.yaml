@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: koperasi-app
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ADMIN_USERNAME
+        value: owner
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SUBSCRIPTION_FEE_LABEL
+        value: Rp 90.000 / 30 hari
